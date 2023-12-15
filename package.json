@@ -1,19 +1,26 @@
 {
-  "name": "webcrawler",
+  "name": "Link Analyzer",
   "version": "1.0.0",
-  "description": "",
+  "description": "Checkin out them links!",
   "main": "index.js",
   "scripts": {
-    "test": "console.log(\"Hello World\")"
+    "start": "node main.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/InCodeMode1/WebCrawler.git"
   },
-  "author": "",
+  "author": "The Fredo B",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/InCodeMode1/WebCrawler/issues"
   },
-  "homepage": "https://github.com/InCodeMode1/WebCrawler#readme"
+  "homepage": "https://github.com/InCodeMode1/WebCrawler#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "dependencies": {
+    "jsdom": "^23.0.1"
+  }
 }
