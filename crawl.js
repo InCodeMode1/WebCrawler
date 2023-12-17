@@ -1,7 +1,4 @@
 
-
-
-
 function normalizeURL(url){
     mod = new URL(url)
     return mod.host + mod.pathname
@@ -9,14 +6,27 @@ function normalizeURL(url){
 
 function getURLsFromHTML(htmlBody, baseURL){
 
+    const urls = []
     const { JSDOM } = require('jsdom')
-    dom = new JSDOM(htmlBody)
-    dom.window.document.querySelectorAll('a')
-    for (tag of dom.window.document.querySelectorAll('a')){
-        console.log(String(tag))
+    const dom = new JSDOM(htmlBody)
+    const hyperlinks = dom.window.document.querySelectorAll('a')
+    for (const hyperlink of hyperlinks){
+        if (hyperlink.href){
+            try {
+                urls.push(new URL(hyperlink.href, baseURL).href)
+            } catch (error) {
+                console.log(`${error.message}: ${aElement.href}`)
+            }
+        } else {
+            try {
+                urls.push(new URL(hyperlink.href).href)
+            } catch (error) {
+                console.log(`${error.message}: ${hyperlink.href}`)
+            }
+        }
     }
 
-    return dom.window.document.querySelectorAll('a')
+    return urls
 
 }
 
