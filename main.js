@@ -1,7 +1,7 @@
-const { normalizeURL, getURLsFromHTML} = require('./crawl.js')
+const { normalizeURL, getURLsFromHTML, crawlPage} = require('./crawl.js')
 
 
-function main(){
+async function main(){
     const { argv } = require('node:process')
     try {
         if (argv.length < 3){
@@ -15,8 +15,10 @@ function main(){
         return
     }
     const baseURL = argv[2]
+    const pages = []
     console.log(`Analyzing ${baseURL}`)
-    
+    const the_log = await crawlPage(baseURL, baseURL, pages)
+    console.log(the_log)
 }
 
 
