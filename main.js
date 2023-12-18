@@ -1,4 +1,5 @@
-const { normalizeURL, getURLsFromHTML, crawlPage} = require('./crawl.js')
+const {crawlPage} = require('./crawl.js')
+const {printReport} = require('./sorter.js')
 
 
 async function main(){
@@ -15,10 +16,9 @@ async function main(){
         return
     }
     const baseURL = argv[2]
-    const pages = []
     console.log(`Analyzing ${baseURL}`)
-    const the_log = await crawlPage(baseURL, baseURL, pages)
-    console.log(the_log)
+    const pages = await crawlPage(baseURL, baseURL, {})
+    printReport(pages)
 }
 
 
